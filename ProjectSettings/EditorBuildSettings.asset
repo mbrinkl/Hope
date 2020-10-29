@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/_Scene_0.unity
+    path: Assets/Invector-3rdPersonController/Melee Combat/DemoScenes/vMeleeCombat_DemoScene.unity
     guid: cbfe36cfddfde964d9dfce63a355d5dd
+  - enabled: 1
+    path: Assets/Invector-3rdPersonController/Melee Combat/DemoScenes/vMelee_GameOver.unity
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

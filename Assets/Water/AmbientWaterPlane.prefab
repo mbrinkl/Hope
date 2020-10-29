@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 2868166539944890627}
   - component: {fileID: 2868166539944890628}
   m_Layer: 0
-  m_Name: Ambient Water Sample
+  m_Name: AmbientWaterPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967290
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2868166539944890629
 Transform:
