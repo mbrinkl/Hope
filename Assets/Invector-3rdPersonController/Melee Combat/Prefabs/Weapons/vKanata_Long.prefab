@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4000010620254262
 Transform:
@@ -77,7 +77,7 @@ GameObject:
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4000010356917786
 Transform:
@@ -159,7 +159,7 @@ GameObject:
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4000011430894570
 Transform:
@@ -194,7 +194,7 @@ GameObject:
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4000013842391146
 Transform:
