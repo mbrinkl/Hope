@@ -33,6 +33,7 @@ TagManager:
   - ClimbUp
   - StepUp
   - JumpOver
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -50,7 +51,7 @@ TagManager:
   - Action
   - HeadTrack
   - BodyPart
-  - 
+  - Ground
   - 
   - 
   - 
