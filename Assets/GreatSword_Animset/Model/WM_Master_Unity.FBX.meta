@@ -468,13 +468,13 @@ ModelImporter:
     serializedVersion: 3
     human: []
     skeleton:
-    - name: WM_Master_Unity(Clone)
+    - name: Rapier Enemy(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: root
-      parentName: WM_Master_Unity(Clone)
+      parentName: Rapier Enemy(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
@@ -775,7 +775,7 @@ ModelImporter:
       rotation: {x: 0.6874711, y: 0.6143626, z: -0.38722363, w: -0.00000010965507}
       scale: {x: 1.0000001, y: 1.0000001, z: 0.9999999}
     - name: WM_Master_Unity
-      parentName: WM_Master_Unity(Clone)
+      parentName: Rapier Enemy(Clone)
       position: {x: -0.000000095367426, y: 0.00000047683716, z: 0}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}

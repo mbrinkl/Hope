@@ -8,13 +8,13 @@ public class ThirdPersonMovement : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
 
-    public float speed = 4;
+    public float speed = 3;
     public float gravity = -9.81f;
     public float jumpHeight = 3;
     Vector3 velocity;
-    bool isRolling = false;
     bool isGrounded;
     bool isEquipped = false;
+    bool isDodging = false;
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
@@ -50,13 +50,12 @@ public class ThirdPersonMovement : MonoBehaviour
         if(Input.GetButtonUp("Fire3") && isGrounded && isBlocking == false)
         {
             isRunning = false;
-            speed = 4;
+            speed = 3;
         }
         if (Input.GetKeyDown(KeyCode.Alpha1) && isEquipped == true)
         {
-            
-            anim.SetTrigger("Unequip");
             isEquipped = false;
+            anim.SetTrigger("Unequip");
             anim.SetBool("Equipped", isEquipped);
         }
 
@@ -67,7 +66,7 @@ public class ThirdPersonMovement : MonoBehaviour
             anim.SetBool("Equipped", isEquipped);
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && isAttacking == false && isEquipped == true)
         {
             isAttacking = true;
             speed = 0;
@@ -85,21 +84,22 @@ public class ThirdPersonMovement : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Mouse1))
         {
-            speed = 4;
+            speed = 3;
             isBlocking = false;
             anim.SetBool("isBlocking", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && isEquipped == true && isDodging == false)
         {
-            speed = 12;
             anim.SetTrigger("Dodge");
-            WaitForDodge();
+            isDodging = true;
+            speed = 12;
+            StartCoroutine(WaitForDodge());
         }
 
         if (Input.GetKeyUp(KeyCode.Mouse0) && isBlocking == false)
         {
-            speed = 4;
+            //speed = 4;
         }
 
         if (isGrounded == true)
@@ -116,9 +116,11 @@ public class ThirdPersonMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
         //walk
+        
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+
 
         if (direction.magnitude >= 0.1f)
         {
@@ -129,21 +131,34 @@ public class ThirdPersonMovement : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
         }
+        
 
         IEnumerator WaitForAttack()
         {
-            yield return new WaitForSecondsRealtime(6);
+            yield return new WaitForSecondsRealtime(1);
             isAttacking = false;
-            speed = 4;
+            if (isAttacking == true || isBlocking == true)
+            {
+                speed = 0;
+            }
+            else if (isRunning == true)
+            {
+                speed = 8;
+            }
+            else
+            {
+                speed = 3;
+            }
         }
 
         IEnumerator WaitForDodge()
         {
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSecondsRealtime(1);
+            isDodging = false;
             if (isRunning == true)
                 speed = 8;
             else
-                speed = 4;
+                speed = 3;
         }
     }
 }
