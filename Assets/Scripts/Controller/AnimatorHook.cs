@@ -30,5 +30,30 @@ namespace FSM
                 states.rigidbody.velocity = v;
             }
         }
+
+        public void OpenDamageCollider()
+        {
+            states.HandleDamageCollider(true);
+        }
+
+        public void CloseDamageColldier()
+        {
+            states.HandleDamageCollider(false);
+        }
+
+        public void EnableCombo(string animId)
+        { 
+            
+        }
+
+        public void DisableCombo()
+        {
+           
+        }
+
+        public void ExecuteCombo()
+        { 
+        
+        }
     }
 }

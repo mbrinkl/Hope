@@ -22,13 +22,23 @@ namespace FSM
         public float horizontal;
         public float delta;
         public Vector3 rootMovement;
+        public string[] animNames = { "Attack1", "Attack2", "Attack3", "Attack4", "Attack5" };
+
+
+        [Header("Item actions")]
+        ItemActionContainer[] itemActions = new ItemActionContainer[1];
+        public ItemActionContainer[] defaultItemActions = new ItemActionContainer[4];
+        [Header("Runtime References")]
+        public WeaponItem weapon;
+        public GameObject model;
+ 
 
         public override void Init()
         {
             anim = GetComponentInChildren<Animator>();
             animHook = GetComponentInChildren<AnimatorHook>();
             rigidbody = GetComponentInChildren<Rigidbody>();
-            anim.applyRootMotion = false;
+            anim.applyRootMotion = true;
 
             animHook.Init(this);
         }
@@ -37,6 +47,27 @@ namespace FSM
         {
             anim.SetBool("isInteracting", isInteracting);
             anim.CrossFade(targetAnim, 0.2f);
+        }
+
+        public void PlayTargetItemAction(AttackInputs attackInput)
+        { 
+        switch(attackInput)
+            {
+                case AttackInputs.Rb:
+                    itemActions[0].ExecuteItemAction(this);
+                    break;
+                case AttackInputs.Rt:
+                    itemActions[1].ExecuteItemAction(this);
+                    break;
+                case AttackInputs.Lb:
+                    itemActions[2].ExecuteItemAction(this);
+                    break;
+                case AttackInputs.Lt:
+                    itemActions[3].ExecuteItemAction(this);
+                    break;
+                default:
+                    break;
+            }
         }
 
         public virtual void OnAssignLookOverride(Transform target)
@@ -49,6 +80,20 @@ namespace FSM
         public virtual void OnClearLookOverride()
         {
             lockOn = false;
+        }
+
+        public void assignCurrentWeapon(WeaponItem weapon)
+        {
+            this.weapon = weapon;
+        }
+
+        public void HandleDamageCollider(bool status)
+        {  
+            weapon.weaponHook.DamageColliderStatus(status);      
+        }
+
+        public void HandleCombo()
+        { 
         }
     }
 }

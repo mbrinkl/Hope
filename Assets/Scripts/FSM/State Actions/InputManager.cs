@@ -9,7 +9,7 @@ namespace FSM
     {
         PlayerStateManager s;
         //triggers and bumpers
-        bool Rb, Rt, Lb, Lt, isAttacking;
+        bool Rb, Rt, Lb, Lt, isAttacking, isEquipped = false;
         //inventory
         bool inventoryInput;
         //prompts
@@ -25,6 +25,7 @@ namespace FSM
         public override bool Execute()
         {
             bool retVal = false;
+            
             isAttacking = false;
 
             s.horizontal = Input.GetAxis("Horizontal");
@@ -48,7 +49,10 @@ namespace FSM
             s.moveAmount = Mathf.Clamp01(Mathf.Abs(s.horizontal) + Mathf.Abs(s.vertical));
 
             retVal = HandleAttacking();
-
+            if (!isEquipped)
+            {
+                s.OnClearLookOverride();
+            }
             if (Input.GetKeyDown(KeyCode.LeftAlt))
             {
                 if (s.lockOn)
@@ -57,33 +61,136 @@ namespace FSM
                 }
                 else
                 {
+                    if(isEquipped)
                     s.OnAssignLookOverride(s.target);
                 }
             }
-            
-            return retVal;
-        }
-        bool HandleAttacking()
-        { 
-            if (Rb || Rt || Lb || Lt)
+
+            if (Input.GetKeyDown(KeyCode.Tab))
             {
-                isAttacking = true;
+                HandleisEquipped();
             }
 
-            if (y_input)
+            if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                isAttacking = false;
+                HandleDodge();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Mouse1) && isEquipped)
+            {
+                HandleBlock();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Q) && isEquipped)
+            {
+                HandleSpecialAttack();
             }
 
             if (isAttacking)
             {
-                //Find the actual attack animation from the items etc.
-                //play animation
-                s.PlayTargetAnimation("Attack1", true);
-                s.ChangeState(s.attackStateId);
+                s.movementSpeed = 0;
+            }
+            return retVal;
+        }
+        
+        bool HandleAttacking()
+        {
+            
+
+            if (Rb)
+            {
+                isAttacking = true;
+                AttackInputs attackInput = AttackInputs.Rb;
+
+                if (Rb)
+                {
+                    attackInput = AttackInputs.Rb;
+                }
+
+                if (Rt)
+                {
+                    attackInput = AttackInputs.Rt;
+                }
+
+                if (Lb)
+                {
+                    attackInput = AttackInputs.Lb;
+                }
+
+                if (Lt)
+                {
+                    attackInput = AttackInputs.Lt;
+                }
             }
 
+            if (y_input)
+            {
+                if (isAttacking)
+                {
+
+                }
+                else
+                {
+                    isAttacking = false;
+                }
+            }
+
+            if (isAttacking && isEquipped)
+            {
+
+                //Find the actual attack animation from the items etc.
+                //play animation
+                if (s.anim.GetCurrentAnimatorStateInfo(0).normalizedTime > .65) 
+                {
+                        s.movementSpeed = 0;
+                    s.anim.SetTrigger("Attack");
+                }
+
+                s.ChangeState(s.attackStateId);
+            }
             return isAttacking;
+        }
+
+        void HandleDodge()
+        {
+            if (isEquipped)
+            {
+                s.PlayTargetAnimation("Dodge", true);
+                s.ChangeState(s.attackStateId);
+            }
+        }
+
+        void HandleBlock()
+        {
+            if (isEquipped)
+            {
+                s.PlayTargetAnimation("Block", false);
+                s.ChangeState(s.attackStateId);
+            }
+        }
+
+        void HandleisEquipped()
+        {
+                if (isEquipped == false)
+                {
+                    s.anim.SetBool("isEquipped", true);
+                    s.PlayTargetAnimation("Equip", true);
+                    s.ChangeState(s.attackStateId);
+                    isEquipped = true;
+                }
+                else
+                {
+                    s.anim.SetBool("isEquipped", false);
+                    s.PlayTargetAnimation("Unequip", true);
+                    s.ChangeState(s.attackStateId);
+                    isEquipped = false;
+                }   
+            }
+        void HandleSpecialAttack()
+        {
+            s.PlayTargetAnimation("Special Start", true);
+            s.ChangeState(s.attackStateId);
         }
     }
 }
+

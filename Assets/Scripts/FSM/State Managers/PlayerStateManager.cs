@@ -19,7 +19,7 @@ namespace FSM
 
         [Header("Movement Stats")]
         public float frontRayOffset = .5f;
-        public float movementSpeed = 2;
+        public float movementSpeed = 8;
         public float adaptSpeed = 10;
         public float rotationSpeed = 10;
 
@@ -70,7 +70,6 @@ namespace FSM
             ChangeState(locomotionId);
 
             ignoreForGroundCheck = ~(1 << 9 | 1 << 10);
-
         }
 
         private void FixedUpdate()
@@ -91,8 +90,6 @@ namespace FSM
         {
             Tick();
         }
-
-
 
         #region State Events
         void DisableRootMotion()
@@ -127,6 +124,5 @@ namespace FSM
             lockOnCamera.gameObject.SetActive(false);
         }
         #endregion
-
     }
 }
