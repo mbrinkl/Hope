@@ -78,7 +78,15 @@ namespace FSM
 
             if (Input.GetKeyDown(KeyCode.Mouse1) && isEquipped)
             {
+                s.anim.SetBool("isBlocking", true);
+                s.movementSpeed = 0;
                 HandleBlock();
+            }
+
+            if (Input.GetKeyUp(KeyCode.Mouse1) && isEquipped)
+            {
+                s.anim.SetBool("isBlocking", false);
+                s.movementSpeed = 8;
             }
 
             if (Input.GetKeyDown(KeyCode.Q) && isEquipped)
@@ -166,7 +174,7 @@ namespace FSM
         {
             if (isEquipped)
             {
-                s.PlayTargetAnimation("Block", false);
+                s.anim.SetTrigger("Block");
                 s.ChangeState(s.attackStateId);
             }
         }

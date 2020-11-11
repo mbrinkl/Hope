@@ -51,7 +51,7 @@ public class EnemyAI : MonoBehaviour
 
         Vector3 distanceToWalkPoint = transform.position = walkPoint;
         //walkpoint reached
-        if (distanceToWalkPoint.magnitude < 1f)
+        if (distanceToWalkPoint.magnitude < 1f || playerInAttackRange)
             walkPointSet = false;
     }
 

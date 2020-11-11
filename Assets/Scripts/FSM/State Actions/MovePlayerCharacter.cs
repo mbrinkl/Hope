@@ -48,7 +48,7 @@ namespace FSM
             if (states.isGrounded)
             {
                 float moveAmount = 0;
-                if (states.anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+                if (states.anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack" ) || states.anim.GetCurrentAnimatorStateInfo(0).IsTag("Block"))
                 {
                     moveAmount = 0;
                 }
