@@ -18,7 +18,7 @@ namespace FSM
         public Cinemachine.CinemachineFreeLook lockOnCamera;
 
         [Header("Movement Stats")]
-        public float frontRayOffset = .5f;
+        public float frontRayOffset = 0.5f;
         public float movementSpeed = 8;
         public float adaptSpeed = 10;
         public float rotationSpeed = 10;
