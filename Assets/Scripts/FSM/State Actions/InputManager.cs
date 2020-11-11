@@ -166,7 +166,7 @@ namespace FSM
                 s.anim.SetTrigger("Dodge");
 
                 //s.PlayTargetAnimation("Dodge",true);
-                s.ChangeState(s.attackStateId);
+                //s.ChangeState(s.attackStateId);
             }
         }
 
