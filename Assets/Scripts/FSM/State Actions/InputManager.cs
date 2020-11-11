@@ -88,7 +88,7 @@ namespace FSM
 
             if (isAttacking)
             {
-                s.movementSpeed = 0;
+                //s.movementSpeed = 0;
             }
             return retVal;
         }
@@ -142,7 +142,7 @@ namespace FSM
                 //play animation
                 if (s.anim.GetCurrentAnimatorStateInfo(0).normalizedTime > .65) 
                 {
-                        s.movementSpeed = 0;
+                        //s.movementSpeed = 0;
                     s.anim.SetTrigger("Attack");
                 }
 

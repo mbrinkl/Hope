@@ -47,7 +47,16 @@ namespace FSM
 
             if (states.isGrounded)
             {
-                float moveAmount = states.moveAmount;
+                float moveAmount = 0;
+                if (states.anim.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+                {
+                    moveAmount = 0;
+                }
+                else
+                {
+
+                    moveAmount = states.moveAmount;
+                }
 
                 if (moveAmount > 0.1f)
                 {
