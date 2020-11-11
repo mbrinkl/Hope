@@ -155,7 +155,9 @@ namespace FSM
         {
             if (isEquipped)
             {
-                s.PlayTargetAnimation("Dodge", true);
+                s.anim.SetTrigger("Dodge");
+
+                //s.PlayTargetAnimation("Dodge",true);
                 s.ChangeState(s.attackStateId);
             }
         }
