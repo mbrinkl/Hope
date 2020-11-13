@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2035111234}
-  m_IndirectSpecularColor: {r: 7.854944, g: 11.536618, b: 17.90534, a: 1}
+  m_IndirectSpecularColor: {r: 7.8578625, g: 11.521235, b: 17.898863, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -18429,7 +18429,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 958874220}
-  m_LocalRotation: {x: -8.06861e-11, y: 0.9963549, z: -0.08530566, w: -9.424038e-10}
+  m_LocalRotation: {x: 0.0000000024629012, y: 0.9963548, z: -0.08530568, w: 0.000000028766236}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -29595,6 +29595,14 @@ MonoBehaviour:
   horizontal: 0
   delta: 0.007233
   rootMovement: {x: 0, y: 0, z: 0}
+  animNames:
+  - Attack1
+  - Attack2
+  - Attack3
+  - Attack4
+  - Attack5
+  weapon: {fileID: 0}
+  model: {fileID: 0}
   mouseX: 0
   mouseY: 0
   moveAmount: 0
@@ -37469,7 +37477,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2016860507}
-  m_LocalRotation: {x: 8.06861e-11, y: 0.9963549, z: -0.08530566, w: 9.424038e-10}
+  m_LocalRotation: {x: -0.0000000024629012, y: 0.9963548, z: -0.08530568, w: -0.000000028766236}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
