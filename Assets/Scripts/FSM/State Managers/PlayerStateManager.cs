@@ -114,7 +114,12 @@ namespace FSM
 
             mainCamera.gameObject.SetActive(false);
             lockOnCamera.gameObject.SetActive(true);
-            lockOnCamera.m_LookAt = target;
+            if (target == null)
+            { return; }
+            else
+            {
+                lockOnCamera.m_LookAt = target;
+            }
         }
 
         public override void OnClearLookOverride()

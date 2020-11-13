@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace FSM
@@ -10,6 +11,7 @@ namespace FSM
         public Animator anim;
         public new Rigidbody rigidbody;
         public AnimatorHook animHook;
+        public SphereCollider sphereCollider;
 
         [Header("States")]
         public bool isGrounded;
@@ -39,7 +41,7 @@ namespace FSM
             animHook = GetComponentInChildren<AnimatorHook>();
             rigidbody = GetComponentInChildren<Rigidbody>();
             anim.applyRootMotion = true;
-
+            target = FindClosestEnemy();
             animHook.Init(this);
         }
 
@@ -75,6 +77,8 @@ namespace FSM
             this.target = target;
             if (target != null)
                 lockOn = true;
+            if (target == null)
+                OnClearLookOverride();
         }
 
         public virtual void OnClearLookOverride()
@@ -92,8 +96,33 @@ namespace FSM
             weapon.weaponHook.DamageColliderStatus(status);      
         }
 
-        public void HandleCombo()
-        { 
+        public Transform FindClosestEnemy()
+        {
+            GameObject[] gos;
+            gos = GameObject.FindGameObjectsWithTag("Enemy");
+            GameObject closest = null;
+            float distance = Mathf.Infinity;
+            Vector3 position = transform.position;
+            for(int i = 0; i < gos.Length; i++)
+            {
+                Vector3 diff = gos[i].transform.position - position;
+                float curDistance = diff.sqrMagnitude;
+                if (curDistance < distance)
+                {
+                    closest = gos[i];
+                    distance = curDistance;
+                }
+            }
+            return closest.transform;
+        }
+        public void Update()
+        {
+
+            if (target == null)
+            {
+                lockOn = false;
+            }
+
         }
     }
 }

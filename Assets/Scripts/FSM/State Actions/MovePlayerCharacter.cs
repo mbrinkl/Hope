@@ -90,8 +90,8 @@ namespace FSM
 
             HandleAnimations();
 
-            Debug.DrawRay((states.mTransform.position + Vector3.up * 0.2f), targetVelocity, Color.green, 0.01f, false);
-            Debug.Log(targetVelocity);
+            //Debug.DrawRay((states.mTransform.position + Vector3.up * 0.2f), targetVelocity, Color.green, 0.01f, false);
+            //Debug.Log(targetVelocity);
             states.rigidbody.velocity = Vector3.Lerp(currentVelocity, targetVelocity, states.delta * states.adaptSpeed);
             
             return false;
