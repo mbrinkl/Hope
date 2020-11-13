@@ -11,7 +11,7 @@ public class Scene_0 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        helpText.text = "Press TAB to equip weapon and LEFT CLICK to attack";
+        helpText.text = "Press TAB to equip weapon, LEFT CLICK to attack, Q to special attack, LEFT ALT to lock camera";
     }
 
     // Update is called once per frame
