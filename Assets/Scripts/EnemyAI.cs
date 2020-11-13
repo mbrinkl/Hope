@@ -61,11 +61,6 @@ namespace FSM
                     healthBarUI.SetActive(true);
                 }
 
-                if (health <= 0)
-                {
-                    DestroyEnemy();
-                }
-
                 if (health > maxHealth)
                 {
                     health = maxHealth;

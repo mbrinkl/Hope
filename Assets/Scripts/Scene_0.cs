@@ -11,7 +11,7 @@ public class Scene_0 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        helpText.gameObject.SetActive(false);
+        helpText.text = "Press TAB to equip weapon and LEFT CLICK to attack";
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class Scene_0 : MonoBehaviour
             else
             {
                 helpText.text = "Proceed to the next soul";
-                helpText.gameObject.SetActive(true);
+                // helpText.gameObject.SetActive(true);
             }
         }
     }
