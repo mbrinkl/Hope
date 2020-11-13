@@ -19041,7 +19041,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 958874220}
-  m_LocalRotation: {x: 0.0000000024629014, y: 0.9963548, z: -0.08530568, w: 0.00000002876624}
+  m_LocalRotation: {x: -8.06861e-11, y: 0.9963549, z: -0.08530566, w: -9.424038e-10}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -35474,7 +35474,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851260943}
-  m_LocalRotation: {x: 0.012842294, y: -0.00000001722176, z: 2.2118517e-10, w: 0.99991757}
+  m_LocalRotation: {x: 0.012842313, y: 0.000000017196562, z: -2.2086186e-10, w: 0.99991757}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -36674,6 +36674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1910873032}
   - component: {fileID: 1910873033}
+  - component: {fileID: 1910873034}
   m_Layer: 5
   m_Name: Health Bar
   m_TagString: Untagged
@@ -36751,6 +36752,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1910873034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910873031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493b12731296cd74296dcc8f95c0c4dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1910873033}
 --- !u!1001 &1918044222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38715,7 +38729,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2016860507}
-  m_LocalRotation: {x: 8.06861e-11, y: 0.9963549, z: -0.08530566, w: 9.424038e-10}
+  m_LocalRotation: {x: -0.0000000024629012, y: 0.9963548, z: -0.08530568, w: -0.000000028766236}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
