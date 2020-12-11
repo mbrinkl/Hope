@@ -147,10 +147,6 @@ namespace FSM
             health -= damage;
             CalculateHealth();
             anim.SetTrigger("Hit");
-            do
-            {
-
-            } while (anim.GetCurrentAnimatorStateInfo(0).IsTag("Hit"));
 
             if (health <= 0)
             {
@@ -159,6 +155,7 @@ namespace FSM
                 agent.isStopped = true;
                 player.GetComponentInParent<PlayerStateManager>().OnClearLookOverride();
                 agent.GetComponentInParent<EnemyAI>().enabled = false;
+                agent.GetComponentInParent<CapsuleCollider>().enabled = false;
                 Invoke(nameof(DestroyEnemy), 1);
             }
         }
